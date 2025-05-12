@@ -1,0 +1,17 @@
+ktor:
+  application:
+    modules:
+      - com.hobby.tracker.ApplicationKt.module
+  deployment:
+    port: 8080
+  api:
+    pokemonTCG:
+      url:
+        endpoint: 'https://api.tcgdex.net/v2/'
+      authentication:
+        key: 'd6d6bdf7-f083-4924-ab5b-9f804242eef8'
+    rawg:
+      url:
+        endpoint: 'https://api.rawg.io/api/games'
+      authentication:
+        key: 'ca8a0aebbede4144a08e3c86c125e1cc'
