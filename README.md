@@ -1,5 +1,5 @@
-# OtakuHub 🎮✨  
-A personal hobby tracker app for anime, games, and Pokémon TCG built with **Kotlin** and **Ktor**.
+# Hubby Tracker API 🎮✨  
+A personal hobby tracker API for anime, games, and Pokémon TCG built with **Kotlin** and **Ktor**.
 
 ---
 
@@ -63,3 +63,42 @@ jwt:
   secret: your_jwt_secret
   issuer: otakuhub.io
   audience: otakuhub_users
+```
+
+---
+
+## 🧪 API Examples
+
+Example of host - if running locally: http://localhost:8080
+
+- GET {host}/pokemon/{id}
+- GET {host}/pokemon/sets
+- GET {host}/pokemon/sets/{setName}
+- GET {host}/pokemon/series
+- GET {host}/pokemon/series/{seriesName}
+- GET {host}/pokemon/rarities
+
+---
+
+## 🏗️ Planned Features
+- UI dashboard with KVision or Angular
+- GraphQL support
+- Public vs Private profiles
+- Export lists to CSV/JSON
+- Integration with AniList & PokéAPI
+
+---
+
+## API Sources
+
+### Pokemon API
+https://docs.pokemontcg.io/
+
+### Games API
+https://api.rawg.io/docs/#tag/games
+
+---
+
+## 📜 License
+
+MIT License
