@@ -2,7 +2,6 @@ package com.hobby.tracker.clients
 
 import com.hobby.tracker.models.PokemonCard
 import com.hobby.tracker.models.Series
-import com.hobby.tracker.models.SeriesBrief
 import com.hobby.tracker.models.Set
 import com.hobby.tracker.services.ConfigService
 import io.ktor.client.*
@@ -16,6 +15,7 @@ class PokemonTCGClient(
     log: Logger
 ): BaseClient(httpClient) {
     private val pokemonTCGLogger = log
+
     suspend fun searchPokemonTCG(id: String): PokemonCard {
         val response = baseClient("GET", "en", "card", id, endpoint = config.pokemonEndpoint)
         val card = Json.decodeFromString<PokemonCard>(
@@ -23,6 +23,7 @@ class PokemonTCGClient(
         )
         return card
     }
+
     suspend fun searchPokemonTCGSets(): ArrayList<Set> {
         val response = baseClient("GET", "en", "sets", endpoint = config.pokemonEndpoint)
 
@@ -31,6 +32,7 @@ class PokemonTCGClient(
         )
         return sets
     }
+
     suspend fun retrievePokemonTCGSet(setName: String): Set {
         val response = baseClient("GET", "en", "sets", setName, endpoint = config.pokemonEndpoint)
         pokemonTCGLogger.info("Response: $response")
@@ -39,6 +41,7 @@ class PokemonTCGClient(
         )
         return sets
     }
+
     suspend fun searchPokemonTCGSeries(): ArrayList<Series> {
         val response = baseClient("GET", "en", "series", endpoint = config.pokemonEndpoint)
         pokemonTCGLogger.info("Response: $response")
@@ -47,6 +50,7 @@ class PokemonTCGClient(
         )
         return sets
     }
+
     suspend fun retrievePokemonTCGSeries(seriesName: String): Series {
         val response = baseClient("GET", "en", "series", seriesName, endpoint = config.pokemonEndpoint)
         pokemonTCGLogger.info("Response: $response")
@@ -55,6 +59,7 @@ class PokemonTCGClient(
         )
         return sets
     }
+
     suspend fun retrievePokemonTCGRarities(): ArrayList<String> {
         val response = baseClient("GET", "en", "rarities", endpoint = config.pokemonEndpoint)
         pokemonTCGLogger.info("Response: $response")

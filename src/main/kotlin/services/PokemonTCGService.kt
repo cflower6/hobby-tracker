@@ -3,7 +3,6 @@ package com.hobby.tracker.services
 import com.hobby.tracker.clients.PokemonTCGClient
 import com.hobby.tracker.models.PokemonCard
 import com.hobby.tracker.models.Series
-import com.hobby.tracker.models.SeriesBrief
 import com.hobby.tracker.models.Set
 
 class PokemonTCGService(private val client: PokemonTCGClient) {

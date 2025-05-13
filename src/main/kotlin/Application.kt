@@ -2,13 +2,14 @@ package com.hobby.tracker
 
 import com.hobby.tracker.clients.ApiClient
 import com.hobby.tracker.clients.PokemonTCGClient
+import com.hobby.tracker.clients.RawgClient
 import com.hobby.tracker.repository.FakeUserRepository
-import com.hobby.tracker.repository.UserRepository
 import com.hobby.tracker.routes.registerPokemonRoutes
 import com.hobby.tracker.routes.registerRawgRoutes
 import com.hobby.tracker.routes.userRoutes
 import com.hobby.tracker.services.ConfigService
 import com.hobby.tracker.services.PokemonTCGService
+import com.hobby.tracker.services.RawgService
 import io.ktor.client.engine.apache5.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
@@ -30,10 +31,12 @@ fun Application.module() {
     val httpClient = ApiClient().createClient(Apache5.create(), "Apache5")
     val pokemonClient = PokemonTCGClient(configService, httpClient, log)
     val pokemonTCGService = PokemonTCGService(pokemonClient)
+    val rawgClient = RawgClient(configService, httpClient, log)
+    val rawgService = RawgService(rawgClient )
     val userRepository = FakeUserRepository(log)
 
     registerPokemonRoutes(pokemonTCGService)
-    registerRawgRoutes(pokemonTCGService)
+    registerRawgRoutes(rawgService)
     userRoutes(userRepository)
     configureRouting()
 }

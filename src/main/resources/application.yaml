@@ -13,6 +13,6 @@ ktor:
     rawg:
       url:
         # https://api.rawg.io/docs/#operation/games_list
-        endpoint: 'https://api.rawg.io/api/games'
+        endpoint: 'https://api.rawg.io/'
       authentication:
         key: 'ca8a0aebbede4144a08e3c86c125e1cc'
