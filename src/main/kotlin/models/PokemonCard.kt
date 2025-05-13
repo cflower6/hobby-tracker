@@ -30,19 +30,39 @@ data class PokemonCard(
     val updated: String? = null,
 )
 
+@OptIn(ExperimentalSerializationApi::class)
+@JsonIgnoreUnknownKeys
 @Serializable
 data class Set(
-    val cardCount: CardCount,
-    val id: String,
+    val cardCount: CardCount? = null,
+    val id: String? = null,
     val logo: String? = null,
     val name: String? = null,
-    val symbol: String? = null
+    val symbol: String? = null,
+    val cards: List<Card>? = null,
+    val legal: Legal? = null,
+    val releaseDate: String? = null,
+    val serie: SeriesBrief? = null,
+    val tcgOnline: String? = null,
+    val abbreviation: Abbreviation? = null,
 )
 
 @Serializable
-data class SeriesBrief(
+data class Card (
     val id: String,
-    val name: String,
+    val image: String? = null,
+    val localId: String? = null,
+    val name: String? = null,
+)
+
+@Serializable
+data class Abbreviation (
+    val official: String? = null,
+)
+@Serializable
+data class SeriesBrief(
+    val id: String? = null,
+    val name: String? = null,
 )
 
 @Serializable
@@ -55,8 +75,12 @@ data class Series(
 
 @Serializable
 data class CardCount (
-    val official: Int,
-    val total: Int
+    val firstEd: Int? = null,
+    val holo: Int? = null,
+    val normal: Int? = null,
+    val official: Int? = null,
+    val reverse: Int? = null,
+    val total: Int? = null,
 )
 
 @Serializable

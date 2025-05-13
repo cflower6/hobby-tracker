@@ -15,6 +15,7 @@ class PokemonTCGClient(
     httpClient: HttpClient,
     log: Logger
 ): BaseClient(httpClient) {
+    private val pokemonTCGLogger = log
     suspend fun searchPokemonTCG(id: String): PokemonCard {
         val response = baseClient("GET", "en", "card", id, endpoint = config.pokemonEndpoint)
         val card = Json.decodeFromString<PokemonCard>(
@@ -31,8 +32,8 @@ class PokemonTCGClient(
         return sets
     }
     suspend fun retrievePokemonTCGSet(setName: String): Set {
-        val response = baseClient("GET", "en", "set", setName, endpoint = config.pokemonEndpoint)
-
+        val response = baseClient("GET", "en", "sets", setName, endpoint = config.pokemonEndpoint)
+        pokemonTCGLogger.info("Response: $response")
         val sets = Json.decodeFromString<Set>(
             response.bodyAsText()
         )
@@ -40,7 +41,7 @@ class PokemonTCGClient(
     }
     suspend fun searchPokemonTCGSeries(): ArrayList<Series> {
         val response = baseClient("GET", "en", "series", endpoint = config.pokemonEndpoint)
-
+        pokemonTCGLogger.info("Response: $response")
         val sets = Json.decodeFromString<ArrayList<Series>>(
             response.bodyAsText()
         )
@@ -48,7 +49,7 @@ class PokemonTCGClient(
     }
     suspend fun retrievePokemonTCGSeries(seriesName: String): SeriesBrief {
         val response = baseClient("GET", "en", "series", seriesName, endpoint = config.pokemonEndpoint)
-
+        pokemonTCGLogger.info("Response: $response")
         val sets = Json.decodeFromString<SeriesBrief>(
             response.bodyAsText()
         )
@@ -56,7 +57,7 @@ class PokemonTCGClient(
     }
     suspend fun retrievePokemonTCGRarities(): ArrayList<String> {
         val response = baseClient("GET", "en", "rarities", endpoint = config.pokemonEndpoint)
-
+        pokemonTCGLogger.info("Response: $response")
         val rarities = Json.decodeFromString<ArrayList<String>>(
             response.bodyAsText()
         )

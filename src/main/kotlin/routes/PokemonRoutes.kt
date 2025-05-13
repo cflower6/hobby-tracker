@@ -35,7 +35,7 @@ private fun Route.getAllPokemonTCGSets(service: PokemonTCGService) {
 }
 
 private fun Route.getPokemonTCGSet(service: PokemonTCGService) {
-    get("/pokemon/set/{setName}") {
+    get("/pokemon/sets/{setName}") {
         val setName = call.parameters["setName"]
         if (setName != null) {
             call.respondNullable(service.getPokemonSet(setName))
@@ -46,13 +46,13 @@ private fun Route.getPokemonTCGSet(service: PokemonTCGService) {
 }
 
 private fun Route.getAllPokemonTCGSeries(service: PokemonTCGService) {
-    get("/pokemon/set/series") {
+    get("/pokemon/series") {
         call.respond(service.getAllPokemonTCGSeries())
     }
 }
 
 private fun Route.getPokemonTCGSeries(service: PokemonTCGService) {
-    get("/pokemon/set/{seriesName}") {
+    get("/pokemon/series/{seriesName}") {
         val seriesName = call.parameters["seriesName"]
         if(seriesName != null) {
             call.respondNullable(service.getPokemonTCGSeries(seriesName))
