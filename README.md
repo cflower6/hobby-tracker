@@ -1,15 +1,14 @@
-# Hubby Tracker API 🎮✨  
+# Hobby Tracker API 🎮✨  
 A personal hobby tracker API for anime, games, and Pokémon TCG built with **Kotlin** and **Ktor**.
 
 ---
 
 ## 🧠 Project Summary  
-**OtakuHub** helps you track your favorite hobbies in one place. Whether you're watching anime, playing games, or collecting Pokémon cards, this MVP lets you log, update, and view your current interests with a clean and responsive API.
+**Hobby Tracker** helps you track your favorite hobbies in one place. Whether you're playing games, or collecting Pokémon cards, this MVP lets you log, update, and view your current interests with a clean and responsive API.
 
 ---
 
-## 🚀 MVP Features  
-- 📺 **Anime Tracking**: Add and retrieve your currently watching list  
+## 🚀 MVP Features   
 - 🎮 **Game Backlog**: Keep tabs on games you're playing or want to play  
 - 🃏 **Pokémon TCG Tracker**: Store card names or sets you're collecting  
 - 🔐 JWT-based Auth for private endpoints  
