@@ -1,5 +1,12 @@
 package com.hobby.tracker.models
 
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonIgnoreUnknownKeys
+
+@OptIn(ExperimentalSerializationApi::class)
+@JsonIgnoreUnknownKeys
+@Serializable
 data class RawgResponse(
     val count: Int,
     val next: String,
@@ -8,6 +15,9 @@ data class RawgResponse(
     val filters: ArrayList<Filter>,
 )
 
+@OptIn(ExperimentalSerializationApi::class)
+@JsonIgnoreUnknownKeys
+@Serializable
 data class Result(
     val id: Int,
     val slug: String,
@@ -40,10 +50,16 @@ data class Result(
     val short_screenshots: ArrayList<ShortScreenshot>,
 )
 
+@OptIn(ExperimentalSerializationApi::class)
+@JsonIgnoreUnknownKeys
+@Serializable
 data class Filter(
     val count: Int,
 )
 
+@OptIn(ExperimentalSerializationApi::class)
+@JsonIgnoreUnknownKeys
+@Serializable
 data class Rating(
     val id: Int,
     val title: String,
@@ -51,28 +67,51 @@ data class Rating(
     val percentage: Double,
 )
 
+@OptIn(ExperimentalSerializationApi::class)
+@JsonIgnoreUnknownKeys
+@Serializable
 data class AddedByStatus(
     val id: Int,
 )
 
+@OptIn(ExperimentalSerializationApi::class)
+@JsonIgnoreUnknownKeys
+@Serializable
 data class Platform(
     val id: Int,
 )
 
+@OptIn(ExperimentalSerializationApi::class)
+@JsonIgnoreUnknownKeys
+@Serializable
 data class Genre(
     val id: Int,
 )
 
+@OptIn(ExperimentalSerializationApi::class)
+@JsonIgnoreUnknownKeys
+@Serializable
 data class Store(
     val id: Int,
 )
+
+@OptIn(ExperimentalSerializationApi::class)
+@JsonIgnoreUnknownKeys
+@Serializable
 data class Tag(
     val id: Int,
 )
+
+@OptIn(ExperimentalSerializationApi::class)
+@JsonIgnoreUnknownKeys
+@Serializable
 data class ESBRating(
     val id: Int,
 )
 
+@OptIn(ExperimentalSerializationApi::class)
+@JsonIgnoreUnknownKeys
+@Serializable
 data class ShortScreenshot(
     val id: Int,
 )

@@ -3,8 +3,8 @@ package com.hobby.tracker.clients
 import com.hobby.tracker.models.RawgResponse
 import com.hobby.tracker.services.ConfigService
 import io.ktor.client.*
-import io.ktor.util.logging.*
 import io.ktor.client.statement.*
+import io.ktor.util.logging.*
 import kotlinx.serialization.json.Json
 
 class RawgClient(
@@ -15,7 +15,7 @@ class RawgClient(
     private val rawgLogger = log
 
     suspend fun getAllGames(): RawgResponse {
-
+//        val setQueryParams = config.rawgAPIKey
         val response = baseClient("GET", "api", "games", endpoint = config.rawgEndpoint)
 
         rawgLogger.info("getAllGames() -- $response")
