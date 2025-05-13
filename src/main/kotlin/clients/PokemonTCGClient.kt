@@ -47,10 +47,10 @@ class PokemonTCGClient(
         )
         return sets
     }
-    suspend fun retrievePokemonTCGSeries(seriesName: String): SeriesBrief {
+    suspend fun retrievePokemonTCGSeries(seriesName: String): Series {
         val response = baseClient("GET", "en", "series", seriesName, endpoint = config.pokemonEndpoint)
         pokemonTCGLogger.info("Response: $response")
-        val sets = Json.decodeFromString<SeriesBrief>(
+        val sets = Json.decodeFromString<Series>(
             response.bodyAsText()
         )
         return sets

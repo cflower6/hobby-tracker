@@ -69,8 +69,20 @@ data class SeriesBrief(
 data class Series(
     val id: String,
     val logo: String? = null,
-    val name: String,
-    val sets: ArrayList<Set>
+    val name: String? = null,
+    val sets: ArrayList<Set>? = null,
+    val firstSet: FirstSet? = null,
+    val lastSet: FirstSet? = null,
+    val releaseDate: String? = null,
+)
+
+@Serializable
+data class FirstSet(
+    val cardCount: CardCount? = null,
+    val id: String? = null,
+    val logo: String? = null,
+    val name: String? = null,
+    val symbol: String? = null,
 )
 
 @Serializable

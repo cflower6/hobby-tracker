@@ -15,7 +15,7 @@ class PokemonTCGService(private val client: PokemonTCGClient) {
         return client.searchPokemonTCGSeries()
     }
 
-    suspend fun getPokemonTCGSeries(seriesName: String): SeriesBrief {
+    suspend fun getPokemonTCGSeries(seriesName: String): Series {
         return client.retrievePokemonTCGSeries(seriesName)
     }
 
