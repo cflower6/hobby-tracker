@@ -9,9 +9,9 @@ ktor:
       url:
         endpoint: 'https://api.tcgdex.net/v2/'
       authentication:
-        key: 'd6d6bdf7-f083-4924-ab5b-9f804242eef8'
+        key: 'test-tcgdex-key'
     rawg:
       url:
         endpoint: 'https://api.rawg.io/api/games'
       authentication:
-        key: 'ca8a0aebbede4144a08e3c86c125e1cc'
+        key: 'test-rawg-key'
