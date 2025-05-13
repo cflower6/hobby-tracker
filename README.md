@@ -1,40 +1,65 @@
-# hobby tracker
+# OtakuHub 🎮✨  
+A personal hobby tracker app for anime, games, and Pokémon TCG built with **Kotlin** and **Ktor**.
 
-This project was created using the [Ktor Project Generator](https://start.ktor.io).
+---
 
-Here are some useful links to get you started:
+## 🧠 Project Summary  
+**OtakuHub** helps you track your favorite hobbies in one place. Whether you're watching anime, playing games, or collecting Pokémon cards, this MVP lets you log, update, and view your current interests with a clean and responsive API.
 
-- [Ktor Documentation](https://ktor.io/docs/home.html)
-- [Ktor GitHub page](https://github.com/ktorio/ktor)
-- The [Ktor Slack chat](https://app.slack.com/client/T09229ZC6/C0A974TJ9). You'll need
-  to [request an invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) to join.
+---
 
-## Features
+## 🚀 MVP Features  
+- 📺 **Anime Tracking**: Add and retrieve your currently watching list  
+- 🎮 **Game Backlog**: Keep tabs on games you're playing or want to play  
+- 🃏 **Pokémon TCG Tracker**: Store card names or sets you're collecting  
+- 🔐 JWT-based Auth for private endpoints  
+- 🌐 RESTful API built using [Ktor](https://ktor.io)
 
-Here's a list of features included in this project:
+---
 
-| Name                                               | Description                                                 |
-|----------------------------------------------------|-------------------------------------------------------------|
-| [Routing](https://start.ktor.io/p/routing-default) | Allows to define structured routes and associated handlers. |
+## 🛠️ Tech Stack  
+- **Backend**: Kotlin, Ktor  
+- **Database**: PostgreSQL  
+- **ORM**: Exposed or Ktorm  
+- **Authentication**: JWT  
+- **Dev Tools**: Gradle, Docker (optional)
 
-## Building & Running
+---
 
-To build or run the project, use one of the following tasks:
+## 📁 Folder Structure  
+<pre>
+/src
+ └── /main
+     ├── /kotlin
+     │   └── com.otakuhub
+     │       ├── Application.kt
+     │       ├── /routes
+     │       ├── /models
+     │       ├── /services
+     │       └── /config
+     └── /resources
+         └── application.yaml
+</pre>
 
-| Task                          | Description                                                          |
-|-------------------------------|----------------------------------------------------------------------|
-| `./gradlew test`              | Run the tests                                                        |
-| `./gradlew build`             | Build everything                                                     |
-| `buildFatJar`                 | Build an executable JAR of the server with all dependencies included |
-| `buildImage`                  | Build the docker image to use with the fat JAR                       |
-| `publishImageToLocalRegistry` | Publish the docker image locally                                     |
-| `run`                         | Run the server                                                       |
-| `runDocker`                   | Run using the local docker image                                     |
+---
 
-If the server starts successfully, you'll see the following output:
+## ⚙️ Configuration  
+Set environment variables or fill in `application.yaml` with:
 
-```
-2024-12-04 14:32:45.584 [main] INFO  Application - Application started in 0.303 seconds.
-2024-12-04 14:32:45.682 [main] INFO  Application - Responding at http://0.0.0.0:8080
-```
+```yaml
+ktor:
+  deployment:
+    port: 8080
+  application:
+    modules:
+      - com.otakuhub.ApplicationKt.module
 
+database:
+  url: jdbc:postgresql://localhost:5432/otakuhub
+  user: your_db_user
+  password: your_db_password
+
+jwt:
+  secret: your_jwt_secret
+  issuer: otakuhub.io
+  audience: otakuhub_users
