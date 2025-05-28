@@ -1,5 +1,5 @@
 # Hobby Tracker API 🎮✨  
-A personal hobby tracker API for anime, games, and Pokémon TCG built with **Kotlin** and **Ktor**.
+A personal hobby tracker API for games and Pokémon TCG built with **Kotlin** and **Ktor**.
 
 ---
 
