@@ -6,7 +6,7 @@ import com.hobby.tracker.models.RawgResponse
 class RawgService(
     private val rawgClient: RawgClient,
 ) {
-    suspend fun getAllGames(): RawgResponse {
-        return rawgClient.getAllGames()
+    suspend fun getGameByName(searchParameter: String): RawgResponse {
+        return rawgClient.getGameByName(searchParameter)
     }
 }

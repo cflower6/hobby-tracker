@@ -22,6 +22,11 @@ data class UserSearchCriteria(
 )
 
 @Serializable
-data class UserWishList(
-    val wishlist: List<PokemonCard>? = null,
+data class UserPokemonList(
+    val ownedPokemonList: List<PokemonCard>? = null,
+)
+
+@Serializable
+data class UserGameList(
+    val ownedGameList: List<PokemonCard>? = null,
 )

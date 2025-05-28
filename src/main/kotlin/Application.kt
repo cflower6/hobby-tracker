@@ -25,6 +25,7 @@ fun Application.module() {
         json(Json {
             prettyPrint = true
             isLenient = true
+            explicitNulls = true
         })
     }
     val configService = ConfigService(environment.config)

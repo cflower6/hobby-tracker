@@ -15,13 +15,14 @@ fun Application.registerRawgRoutes(service: RawgService) {
 
 private fun Route.getAllGames(service: RawgService) {
     get("/games") {
-        call.respond(service.getAllGames())
+        //call.respond(service.getAllGames())
     }
 }
 
 private fun Route.getGameByName(service: RawgService) {
     get("/games/{name}") {
         val name = call.parameters["name"] ?: return@get call.respondText("Bad Request", status = HttpStatusCode.BadRequest)
-        call.respondText("FOUND")
+        val gameList = service.getGameByName(name)
+        call.respondNullable(gameList)
     }
 }

@@ -8,7 +8,7 @@ import io.ktor.http.*
 abstract class BaseClient(
     private val httpClient: HttpClient,
 ) {
-    suspend fun baseClient(httpVerb: String, vararg pathSegments: String, endpoint: String): HttpResponse {
+    suspend fun baseClient(httpVerb: String, vararg pathSegments: String, queryParams: Map<String, String>? = emptyMap(), endpoint: String): HttpResponse {
         val response: HttpResponse = httpClient.request(endpoint) {
             method = when (httpVerb) {
                 "GET" -> HttpMethod.Get
@@ -22,6 +22,11 @@ abstract class BaseClient(
             }
             url {
                 appendPathSegments(*pathSegments)
+                if (queryParams != null) {
+                    for (query in queryParams) {
+                        parameter(query.key, query.value)
+                    }
+                }
             }
             contentType(ContentType.Application.Json)
             headers {

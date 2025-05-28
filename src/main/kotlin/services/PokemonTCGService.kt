@@ -29,4 +29,6 @@ class PokemonTCGService(private val client: PokemonTCGClient) {
     suspend fun getPokemonRarities(): List<String> {
         return client.retrievePokemonTCGRarities()
     }
+
+
 }
