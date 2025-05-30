@@ -14,9 +14,9 @@ fun Application.registerRawgRoutes(service: RawgService) {
 }
 
 private fun Route.getAllGames(service: RawgService) {
-    get("/games") {
-        //call.respond(service.getAllGames())
-    }
+//    get("/games") {
+//        call.respond(service.getAllGames())
+//    }
 }
 
 private fun Route.getGameByName(service: RawgService) {

@@ -8,8 +8,14 @@ import io.ktor.http.*
 abstract class BaseClient(
     private val httpClient: HttpClient,
 ) {
-    suspend fun baseClient(httpVerb: String, vararg pathSegments: String, queryParams: Map<String, String>? = emptyMap(), endpoint: String): HttpResponse {
+    suspend fun baseClient(
+        httpVerb: String,
+        vararg pathSegments: String,
+        queryParams: Map<String, String>? = emptyMap(),
+        endpoint: String): HttpResponse
+    {
         val response: HttpResponse = httpClient.request(endpoint) {
+
             method = when (httpVerb) {
                 "GET" -> HttpMethod.Get
                 "POST" -> HttpMethod.Post
