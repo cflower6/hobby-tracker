@@ -1,6 +1,6 @@
-package com.hobby.tracker.routes
+package com.hobby.tracker.domain.pokemon.routes
 
-import com.hobby.tracker.services.PokemonTCGService
+import com.hobby.tracker.domain.pokemon.services.PokemonTCGService
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
@@ -30,7 +30,7 @@ private fun Route.getPokemonByIdRoute(service: PokemonTCGService) {
 
 private fun Route.getAllPokemonTCGSets(service: PokemonTCGService) {
     get("/pokemon/sets") {
-        call.respond(service.getPokemonSets())
+        call.respond(service.getPokemonSets() as Any)
     }
 }
 
@@ -47,7 +47,7 @@ private fun Route.getPokemonTCGSet(service: PokemonTCGService) {
 
 private fun Route.getAllPokemonTCGSeries(service: PokemonTCGService) {
     get("/pokemon/series") {
-        call.respond(service.getAllPokemonTCGSeries())
+        call.respond(service.getAllPokemonTCGSeries() as Any)
     }
 }
 
@@ -64,6 +64,6 @@ private fun Route.getPokemonTCGSeries(service: PokemonTCGService) {
 
 private fun Route.getPokemonRarities(service: PokemonTCGService) {
     get("/pokemon/rarities") {
-        call.respond(service.getPokemonRarities())
+        call.respond(service.getPokemonRarities() as Any)
     }
 }

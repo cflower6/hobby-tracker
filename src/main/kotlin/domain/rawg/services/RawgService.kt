@@ -1,7 +1,7 @@
-package com.hobby.tracker.services
+package com.hobby.tracker.domain.rawg.services
 
-import com.hobby.tracker.clients.RawgClient
-import com.hobby.tracker.models.RawgResponse
+import com.hobby.tracker.domain.rawg.clients.RawgClient
+import com.hobby.tracker.domain.rawg.model.RawgResponse
 
 class RawgService(
     private val rawgClient: RawgClient,

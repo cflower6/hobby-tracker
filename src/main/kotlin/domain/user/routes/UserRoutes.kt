@@ -1,8 +1,8 @@
-package com.hobby.tracker.routes
+package com.hobby.tracker.domain.user.routes
 
-import com.hobby.tracker.models.User
-import com.hobby.tracker.models.UserSearchCriteria
-import com.hobby.tracker.repository.UserRepository
+import com.hobby.tracker.domain.user.models.User
+import com.hobby.tracker.domain.user.models.UserSearchCriteria
+import com.hobby.tracker.domain.user.repository.UserRepository
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*

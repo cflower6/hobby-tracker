@@ -1,4 +1,4 @@
-package com.hobby.tracker.helper
+package com.hobby.tracker.util
 
 import java.security.cert.X509Certificate
 import javax.net.ssl.X509TrustManager

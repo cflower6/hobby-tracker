@@ -1,5 +1,6 @@
-package com.hobby.tracker.models
+package com.hobby.tracker.domain.user.models
 
+import com.hobby.tracker.domain.pokemon.model.PokemonCard
 import kotlinx.serialization.Serializable
 
 

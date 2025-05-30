@@ -1,6 +1,6 @@
-package com.hobby.tracker.routes
+package com.hobby.tracker.domain.rawg.routes
 
-import com.hobby.tracker.services.RawgService
+import com.hobby.tracker.domain.rawg.services.RawgService
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*

@@ -1,15 +1,16 @@
 package com.hobby.tracker
 
 import com.hobby.tracker.clients.ApiClient
-import com.hobby.tracker.clients.PokemonTCGClient
-import com.hobby.tracker.clients.RawgClient
-import com.hobby.tracker.repository.FakeUserRepository
-import com.hobby.tracker.routes.registerPokemonRoutes
-import com.hobby.tracker.routes.registerRawgRoutes
-import com.hobby.tracker.routes.userRoutes
-import com.hobby.tracker.services.ConfigService
-import com.hobby.tracker.services.PokemonTCGService
-import com.hobby.tracker.services.RawgService
+import com.hobby.tracker.domain.pokemon.clients.PokemonTCGClient
+import com.hobby.tracker.domain.pokemon.repository.PokemonTCGRepository
+import com.hobby.tracker.domain.rawg.clients.RawgClient
+import com.hobby.tracker.domain.user.repository.FakeUserRepository
+import com.hobby.tracker.domain.pokemon.routes.registerPokemonRoutes
+import com.hobby.tracker.domain.rawg.routes.registerRawgRoutes
+import com.hobby.tracker.domain.user.routes.userRoutes
+import com.hobby.tracker.util.ConfigService
+import com.hobby.tracker.domain.pokemon.services.PokemonTCGService
+import com.hobby.tracker.domain.rawg.services.RawgService
 import io.ktor.client.engine.apache5.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
@@ -31,10 +32,12 @@ fun Application.module() {
     val configService = ConfigService(environment.config)
     val httpClient = ApiClient().createClient(Apache5.create(), "Apache5")
     val pokemonClient = PokemonTCGClient(configService, httpClient, log)
-    val pokemonTCGService = PokemonTCGService(pokemonClient)
+    val pokemonTCGRepository = PokemonTCGRepository(pokemonClient, log)
+    val pokemonTCGService = PokemonTCGService(pokemonTCGRepository)
     val rawgClient = RawgClient(configService, httpClient, log)
     val rawgService = RawgService(rawgClient )
     val userRepository = FakeUserRepository(log)
+
 
     registerPokemonRoutes(pokemonTCGService)
     registerRawgRoutes(rawgService)

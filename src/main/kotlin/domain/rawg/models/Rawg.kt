@@ -1,4 +1,4 @@
-package com.hobby.tracker.models
+package com.hobby.tracker.domain.rawg.model
 
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName

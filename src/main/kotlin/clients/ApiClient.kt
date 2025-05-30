@@ -1,6 +1,6 @@
 package com.hobby.tracker.clients
 
-import com.hobby.tracker.helper.TrustAllX509TrustManager
+import com.hobby.tracker.util.TrustAllX509TrustManager
 import io.ktor.client.*
 import io.ktor.client.engine.*
 import io.ktor.client.engine.apache5.*
@@ -9,7 +9,7 @@ import java.security.SecureRandom
 import javax.net.ssl.SSLContext
 
 class ApiClient {
-    private lateinit var client: HttpClient;
+    private lateinit var client: HttpClient
 
     private fun setSSLConfigFlavor(engine: HttpClientEngine, sslPin: String?) {
         when(sslPin) {

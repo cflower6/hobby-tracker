@@ -1,6 +1,6 @@
-package com.hobby.tracker.repository
+package com.hobby.tracker.domain.user.repository
 
-import com.hobby.tracker.models.User
+import com.hobby.tracker.domain.user.models.User
 
 interface UserRepository {
     fun getUser(email: String, password: String): User?

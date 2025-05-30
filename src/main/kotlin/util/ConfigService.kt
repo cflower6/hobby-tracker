@@ -1,6 +1,6 @@
-package com.hobby.tracker.services
+package com.hobby.tracker.util
 
-import io.ktor.server.config.*
+import io.ktor.server.config.ApplicationConfig
 
 class ConfigService(config: ApplicationConfig) {
     val pokemonEndpoint: String = config.property("ktor.api.pokemonTCG.url.endpoint").getString()

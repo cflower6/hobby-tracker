@@ -1,10 +1,11 @@
-package com.hobby.tracker.clients
+package com.hobby.tracker.domain.rawg.clients
 
-import com.hobby.tracker.models.RawgResponse
-import com.hobby.tracker.services.ConfigService
-import io.ktor.client.*
-import io.ktor.client.statement.*
-import io.ktor.util.logging.*
+import com.hobby.tracker.clients.BaseClient
+import com.hobby.tracker.domain.rawg.model.RawgResponse
+import com.hobby.tracker.util.ConfigService
+import io.ktor.client.HttpClient
+import io.ktor.client.statement.bodyAsText
+import io.ktor.util.logging.Logger
 import kotlinx.serialization.json.Json
 
 class RawgClient(
@@ -26,7 +27,7 @@ class RawgClient(
         rawgLogger.info("getGameByName(\"$searchParameter\") -- $response")
         rawgLogger.info(response.bodyAsText())
 
-        val games = Json.decodeFromString<RawgResponse>(
+        val games = Json.Default.decodeFromString<RawgResponse>(
             response.bodyAsText()
         )
         return games
@@ -42,7 +43,7 @@ class RawgClient(
 
         rawgLogger.info("getAllGames()")
 
-        val games = Json.decodeFromString<RawgResponse>(
+        val games = Json.Default.decodeFromString<RawgResponse>(
             response.bodyAsText()
         )
 
