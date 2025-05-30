@@ -26,6 +26,7 @@ private fun Route.createUserRoutes(repository: UserRepository) {
         call.respond(HttpStatusCode.Created)
     }
 }
+
 private fun Route.getUserRoutes(repository: UserRepository) {
     get("/get"){
         val userSearchCriteria = call.receive<UserSearchCriteria>()
@@ -33,11 +34,12 @@ private fun Route.getUserRoutes(repository: UserRepository) {
         try {
             val user = repository.getUser(userSearchCriteria.email, userSearchCriteria.password)
             call.respondNullable(user)
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             call.respond(HttpStatusCode.BadRequest)
         }
     }
 }
+
 private fun Route.deleteUserRoutes(repository: UserRepository) {
     delete("/remove"){
         val user = call.receive<UserSearchCriteria>()
@@ -49,6 +51,7 @@ private fun Route.deleteUserRoutes(repository: UserRepository) {
         }
     }
 }
+
 private fun Route.updateUserRoutes(repository: UserRepository) {
     post("/update"){
         val user = call.receive<User>()
