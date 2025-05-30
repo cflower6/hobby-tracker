@@ -14,9 +14,16 @@ fun Application.registerRawgRoutes(service: RawgService) {
 }
 
 private fun Route.getAllGames(service: RawgService) {
-//    get("/games") {
-//        call.respond(service.getAllGames())
-//    }
+    get("/games") {
+        call.respondNullable(service.getAllGames(null))
+    }
+
+    get("/games/{page_size}") {
+        val pageSize: String? = call.parameters["page_size"]
+        if (pageSize != null) {
+            call.respond(service.getAllGames(pageSize))
+        } else call.respond(service.getAllGames(null))
+    }
 }
 
 private fun Route.getGameByName(service: RawgService) {

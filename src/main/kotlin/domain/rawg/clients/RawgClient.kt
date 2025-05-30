@@ -18,8 +18,9 @@ class RawgClient(
     suspend fun getGameByName(searchParameter: String): RawgResponse {
         val setQueryParams = mapOf("key" to config.rawgAPIKey, "search" to searchParameter, "page_size" to "5")
 
-        val response = baseClient("GET",
-            "api", "games",
+        val response = baseClient(
+            "GET",
+            "api", "games", "3498",
             endpoint = config.rawgEndpoint,
             queryParams = setQueryParams
         )
@@ -33,20 +34,24 @@ class RawgClient(
         return games
     }
 
-    suspend fun getAllGames(pageSize: String? = "5"): RawgResponse {
+    suspend fun getAllGames(pageSize: String? = "5"): String {
         val setQueryParams = mapOf("key" to config.rawgAPIKey, "page_size" to "$pageSize")
 
-        val response = baseClient("GET", "api",
-            "games", endpoint = config.rawgEndpoint,
+        val response = baseClient(
+            "GET",
+            "api", "games", "3498",
+            endpoint = config.rawgEndpoint,
             queryParams = setQueryParams
         )
 
         rawgLogger.info("getAllGames()")
+        rawgLogger.info(response.bodyAsText())
 
         val games = Json.Default.decodeFromString<RawgResponse>(
             response.bodyAsText()
         )
 
-        return games
+        rawgLogger.info(games.toString())
+        return response.bodyAsText()
     }
 }

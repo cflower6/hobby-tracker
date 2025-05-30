@@ -10,6 +10,7 @@ import com.hobby.tracker.domain.rawg.routes.registerRawgRoutes
 import com.hobby.tracker.domain.user.routes.userRoutes
 import com.hobby.tracker.util.ConfigService
 import com.hobby.tracker.domain.pokemon.services.PokemonTCGService
+import com.hobby.tracker.domain.rawg.repository.RawgRepository
 import com.hobby.tracker.domain.rawg.services.RawgService
 import io.ktor.client.engine.apache5.*
 import io.ktor.serialization.kotlinx.json.*
@@ -35,7 +36,8 @@ fun Application.module() {
     val pokemonTCGRepository = PokemonTCGRepository(pokemonClient, log)
     val pokemonTCGService = PokemonTCGService(pokemonTCGRepository)
     val rawgClient = RawgClient(configService, httpClient, log)
-    val rawgService = RawgService(rawgClient )
+    val rawgRepository = RawgRepository(rawgClient, log)
+    val rawgService = RawgService(rawgRepository)
     val userRepository = FakeUserRepository(log)
 
 
